@@ -6,6 +6,10 @@ class HomeController extends CI_Controller {
     public function index()
 	{
 		$data= array();
+		$this->load->model('AdminModel');
+		
+		$data['catagory']=$this->AdminModel->ShowCatagory();
+
 		$data['main_contain']=$this->load->view('pages/home_contain','',true) ;
 		$this->load->view('master',$data);
 	}

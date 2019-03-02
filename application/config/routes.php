@@ -56,9 +56,15 @@ $route['checkout'] = 'homecontroller/checkout';
 $route['Admin'] = 'AdminController';
 $route['CheckAdmin'] = 'AdminController/VerifyAdmin';
 $route['AdminLogout'] = 'AdminController/logout';
-
+//admin dashbord
 $route['Admin-Dashbord'] = 'AdminDashbord';
 $route['Admin-Add-Catagory'] = 'AdminDashbord/AddCatagory';
+$route['Save-Catagory'] = 'AdminDashbord/SaveCatagory';
+$route['Manage-Catagory'] = 'AdminDashbord/ManageCatagory';
+$route['Unpublish-Catagory/(.+)'] = 'AdminDashbord/UnpublishCatagory/$1';
+$route['Publish-Catagory/(.+)'] = 'AdminDashbord/PublishCatagory/$1';
+$route['Delete-Catagory/(.+)'] = 'AdminDashbord/DeleteCatagory/$1';
+
 
 
 
