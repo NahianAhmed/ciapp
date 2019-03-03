@@ -17,10 +17,19 @@
 
 
          <h4 style="color:green" > <?php
+
 					   if($this->session->userdata('msg')){
 						echo $this->session->userdata('msg');
 						$this->session->unset_userdata('msg');
 					}
+					
+					if($this->session->flashdata('error')){				
+						echo $this->session->flashdata('error');
+					}
+
+
+
+
 					?>  
 					</h4>
 				<div class="box span12">
@@ -35,6 +44,7 @@
 					</div>
 					<div class="box-content">
 						<form class="form-horizontal" method="POST" action="<?php echo base_url()?>Save-Catagory">
+            <?php echo form_open('form'); ?>  
 						  <fieldset>
 							<div class="control-group">
 							  <label class="control-label" for="typeahead">Catagory Name </label>
@@ -62,7 +72,7 @@
 							  <div class="controls">
 								<select name="publication_status">
 								
-								<option >Select Option</option>
+								<option value="">Select Option</option>
 								<option value="1">Published</option>
 								<option value="0">Unpublished</option>
 								
@@ -77,7 +87,8 @@
 							  <button type="reset" class="btn">Cancel</button>
 							</div>
 						  </fieldset>
-						</form>   
+						</form>  
+						
 
 					</div>
 				</div><!--/span-->

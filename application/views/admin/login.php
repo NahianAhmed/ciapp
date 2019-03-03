@@ -31,11 +31,11 @@
         </div>
         <div class="logmod__form">
 
-
+        
 
 
           <form accept-charset="utf-8" action="#" method="POST" class="simform">
-        
+          
             <div class="sminputs">
               <div class="input full">
                 <label class="string optional" for="user-name">Name*</label>
@@ -87,9 +87,16 @@
           <span class="logmod__heading-subtitle">Enter your email and password <strong>to sign in</strong></span>
 				<p style="background:red" >
 					<?php
-							if($this->session->userdata('msg'))
+
+
+              
+							if($this->session->userdata('msg')){
 							echo $this->session->userdata('msg');
-							$this->session->unset_userdata('msg');
+              $this->session->unset_userdata('msg');
+              }
+         
+               
+        
          ?>
        </p>
         </div>

@@ -14,6 +14,8 @@ class AdminController extends CI_Controller {
 	{
 		$user_name=$this->input->post('name',true);
 		$user_pass=$this->input->post('password',true);
+
+		
 	
 		if($user_name=='admin'&&$user_pass=='admin'){
 				$admin=array();

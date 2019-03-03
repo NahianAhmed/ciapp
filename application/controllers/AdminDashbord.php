@@ -32,11 +32,36 @@ class AdminDashbord extends CI_Controller {
 
 	public function SaveCatagory()
 	{
+       // $this->load->library('form_validation');
+
+		$this->form_validation->set_rules('catagory_name', 'Catagory Name', 'required');
+		$this->form_validation->set_rules('catagory_description', 'Catagory Description', 'required');
+		$this->form_validation->set_rules('publication_status', 'publication Status', 'required');
+		
+
+		if($this->form_validation->run() == FALSE){
+			//echo validation_errors();
+			//$this->AddCatagory();
+			$this->session->set_flashdata('error', validation_errors());
+			redirect('/Admin-Add-Catagory');
+
+			
+		}
+
+
+		else{
+		   
+			
 		$this->AdminModel->save_catagory();
 		$data=array();
 		$data['msg']="Data Added Successfully";
 		$this->session->set_userdata($data);
 		redirect ('/Admin-Add-Catagory/');
+		
+	}
+
+
+		
 
 		
 	}
@@ -64,6 +89,44 @@ class AdminDashbord extends CI_Controller {
 		$this->AdminModel->DeleteCatagory($id);
 		redirect ('/Manage-Catagory');
 		
+	}
+
+
+public function mail(){
+  
+
+$this->load->library('email');
+
+//SMTP & mail configuration
+$config = array(
+    'protocol'  => 'smtp',
+    'smtp_host' => 'ssl://smtp.googlemail.com',
+    'smtp_port' => 465,
+    'smtp_user' => 'heartsoft420@gmail.com',
+    'smtp_pass' => 'S01714415122',
+    'mailtype'  => 'html',
+    'charset'   => 'utf-8'
+);
+$this->email->initialize($config);
+$this->email->set_mailtype("html");
+$this->email->set_newline("\r\n");
+
+//Email content
+$htmlContent = '<h1>Sending email via SMTP server</h1>';
+$htmlContent .= '<p>This email has sent via SMTP server from CodeIgniter application.</p>';
+
+$this->email->to('nahianahmedcse@gmail.com');
+$this->email->from('heartsoft420@gmail.com','test');
+$this->email->subject('How to send email via SMTP server in CodeIgniter');
+$this->email->message($htmlContent);
+
+//Send email
+$this->email->send();
+echo $this->email->print_debugger();
+
+
+
+
 	}
 	
 
